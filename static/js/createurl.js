@@ -58,11 +58,11 @@ function createURL(fullURL) {
 		case2Vis = "hide";
 	}
 
-	if ($("#caseSelection #case3Label").hasClass("unselected") == false) {
-		case3Vis = "show";
-	} else {
-		case3Vis = "hide";
-	}
+	// if ($("#caseSelection #case3Label").hasClass("unselected") == false) {
+	// 	case3Vis = "show";
+	// } else {
+	// 	case3Vis = "hide";
+	// }
 
 	// units
 	if ($(".optionButton#IP").hasClass("selected") == true) {
@@ -85,10 +85,10 @@ function createURL(fullURL) {
 
 
 	// check to be sure that this is not already a long URL.
-	locationURL = location.href.split("?")[0]
+	locationURL = "https://payette.github.io/Glazing-and-Winter-Comfort-Tool/"
 
 	// Start the URL and create dictioaries of all values.
-	var paramURL = locationURL + "?case1=show" + "&case2=" + case2Vis + "&case3=" + case3Vis
+	var paramURL = locationURL + "?case1=show" + "&case2=" + case2Vis
 
 	var valDictionary = {
 		units: units,
@@ -141,25 +141,25 @@ function createURL(fullURL) {
 	}
 
 	// values for only case 3
-	var case3Dict = {
-		ceiling: $("#ceiling3").val(),
-		wallWidth: $("#wallWidth3").val(),
-		windowHeight: $("#windowHeight3").val(),
-		sillHeight: $("#sill3").val(),
-		windowWidth: $("#windowWidth3").val(),
-		glazingRatio: $("#glazing3").val(),
-		windowSeparation: $('#distWindow3').val(),
-		uValue: $("#uvalue3").val(),
-		outdoorTemp: $("#outdoortemp3").val(),
-		indoortemp: round(case3Data.airtempValue*10)/10,
-		humidity: $("#humidity3").val(),
-		lowE: $("#lowE3").val(),
-		occPosition: $("#occupantDist3").val(),
-		rValue: $("#rvalue3").val(),
-		airspeed: $("#airspeed3").val(),
-		clothing: $("#clothing3").val(),
-		metabolic: $("#metabolic3").val()
-	}
+	// var case3Dict = {
+	// 	ceiling: $("#ceiling3").val(),
+	// 	wallWidth: $("#wallWidth3").val(),
+	// 	windowHeight: $("#windowHeight3").val(),
+	// 	sillHeight: $("#sill3").val(),
+	// 	windowWidth: $("#windowWidth3").val(),
+	// 	glazingRatio: $("#glazing3").val(),
+	// 	windowSeparation: $('#distWindow3').val(),
+	// 	uValue: $("#uvalue3").val(),
+	// 	outdoorTemp: $("#outdoortemp3").val(),
+	// 	indoortemp: round(case3Data.airtempValue*10)/10,
+	// 	humidity: $("#humidity3").val(),
+	// 	lowE: $("#lowE3").val(),
+	// 	occPosition: $("#occupantDist3").val(),
+	// 	rValue: $("#rvalue3").val(),
+	// 	airspeed: $("#airspeed3").val(),
+	// 	clothing: $("#clothing3").val(),
+	// 	metabolic: $("#metabolic3").val()
+	// }
 
 
 	// build the URL
@@ -173,9 +173,9 @@ function createURL(fullURL) {
 		for (var key in case2Dict) {
 			paramURL = paramURL + "&" + key + "=" + case2Dict[key]
 		}
-		for (var key in case3Dict) {
-			paramURL = paramURL + "&" + key + "=" + case3Dict[key]
-		}
+		// for (var key in case3Dict) {
+		// 	paramURL = paramURL + "&" + key + "=" + case3Dict[key]
+		// }
 	} else {
 		for (var key in valDictionary) {
 			if (units == "SI" && key == "distFromFacade") {
@@ -206,11 +206,11 @@ function createURL(fullURL) {
 				}
 			}
 
-			for (var key in case3Dict) {
-				if (case3Dict[key] != defaultDict[key]) {
-					paramURL = paramURL + "&" + key + "3=" + case3Dict[key]
-				}
-			}
+			// for (var key in case3Dict) {
+			// 	if (case3Dict[key] != defaultDict[key]) {
+			// 		paramURL = paramURL + "&" + key + "3=" + case3Dict[key]
+			// 	}
+			// }
 		} else {
 			for (var key in case1Dict) {
 				if (case1Dict[key] != defaultDictSI[key]) {
@@ -224,11 +224,11 @@ function createURL(fullURL) {
 				}
 			}
 
-			for (var key in case3Dict) {
-				if (case3Dict[key] != defaultDictSI[key]) {
-					paramURL = paramURL + "&" + key + "3=" + case3Dict[key]
-				}
-			}
+			// for (var key in case3Dict) {
+			// 	if (case3Dict[key] != defaultDictSI[key]) {
+			// 		paramURL = paramURL + "&" + key + "3=" + case3Dict[key]
+			// 	}
+			// }
 		}
 	}
 
