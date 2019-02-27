@@ -58,11 +58,11 @@ function createURL(fullURL) {
 		case2Vis = "hide";
 	}
 
-	// if ($("#caseSelection #case3Label").hasClass("unselected") == false) {
-	// 	case3Vis = "show";
-	// } else {
-	// 	case3Vis = "hide";
-	// }
+	if ($("#caseSelection #case3Label").hasClass("unselected") == false) {
+		case3Vis = "show";
+	} else {
+		case3Vis = "hide";
+	}
 
 	// units
 	if ($(".optionButton#IP").hasClass("selected") == true) {
@@ -88,7 +88,7 @@ function createURL(fullURL) {
 	locationURL = "https://payette.github.io/Glazing-and-Winter-Comfort-Tool/"
 
 	// Start the URL and create dictioaries of all values.
-	var paramURL = locationURL + "?case1=show" + "&case2=" + case2Vis
+	var paramURL = locationURL + "?case1=show" + "&case2=" + case2Vis + "&case3=hide"
 
 	var valDictionary = {
 		units: units,
