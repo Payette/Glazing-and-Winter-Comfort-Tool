@@ -562,6 +562,8 @@ render.makeGraph = function () {
       if ($(this).hasClass("unselected") == true) {
         //becomes selected
       $(this).removeClass("unselected");
+      $("#case2Label1").removeClass("unselected");
+      $("#case2Label2").removeClass("unselected");
       $("#inputs input.case2").removeClass("unselected");
 
       $("#inputs input.case2, div.case2, #sliderWrapper2, .connectLine2, .dotCase2, .occdot2").css("display","inline-block");
@@ -576,6 +578,8 @@ render.makeGraph = function () {
     else if ($(this).hasClass("unselected") == false) {
       // becomes unselected
       $(this).addClass("unselected");
+      $("#case2Label1").addClass("unselected");
+      $("#case2Label2").addClass("unselected");
 
       $("#inputs input.case2, div.case2, #sliderWrapper2, .connectLine2, .dotCase2, .occdot2, hr.case2, #occupantImage2").css("display","none");
       $("#inputs input.case2").addClass("unselected");
@@ -593,6 +597,96 @@ render.makeGraph = function () {
     updateOccupantDistanceRefLine();
 
     });
+
+    $("#caseSelection #case2Label1").on("click", function() {
+
+      $("#case2Heading").toggleClass("greyText").toggleClass("case2Text");
+      $("#case2Button").toggleClass("unselected");
+
+      if ($(this).hasClass("unselected") == true) {
+        //becomes selected
+      $(this).removeClass("unselected");
+      $("#case2Label").removeClass("unselected");
+      $("#case2Label2").removeClass("unselected");
+      $("#inputs input.case2").removeClass("unselected");
+
+      $("#inputs input.case2, div.case2, #sliderWrapper2, .connectLine2, .dotCase2, .occdot2").css("display","inline-block");
+      $("hr.case2, #occupantImage2, div.customCheckStyleCentered.case2").css("display","block");
+
+      d3.selectAll("rect.wall2").classed("outlined", false);
+      d3.selectAll("rect.wall2").classed("filled", true);
+      d3.selectAll("rect.window2").classed("white", false);
+      d3.selectAll("rect.window2").classed("blue", true);
+    }
+
+    else if ($(this).hasClass("unselected") == false) {
+      // becomes unselected
+      $(this).addClass("unselected");
+      $("#case2Label").addClass("unselected");
+      $("#case2Label2").addClass("unselected");
+
+      $("#inputs input.case2, div.case2, #sliderWrapper2, .connectLine2, .dotCase2, .occdot2, hr.case2, #occupantImage2").css("display","none");
+      $("#inputs input.case2").addClass("unselected");
+
+      d3.selectAll("rect.wall2").classed("outlined", true);
+      d3.selectAll("rect.wall2").classed("filled", false);
+      d3.selectAll("rect.window2").classed("white", true);
+      d3.selectAll("rect.window2").classed("blue", false);
+    }
+
+    // Update static tooltip text
+    thresholdDataText("dwn");
+    thresholdDataText("mrt");
+    thresholdDataText("comb");
+    updateOccupantDistanceRefLine();
+
+    });
+
+    $("#caseSelection #case2Label2").on("click", function() {
+
+      $("#case2Heading").toggleClass("greyText").toggleClass("case2Text");
+      $("#case2Button").toggleClass("unselected");
+
+      if ($(this).hasClass("unselected") == true) {
+        //becomes selected
+      $(this).removeClass("unselected");
+      $("#case2Label1").removeClass("unselected");
+      $("#case2Label").removeClass("unselected");
+      $("#inputs input.case2").removeClass("unselected");
+
+      $("#inputs input.case2, div.case2, #sliderWrapper2, .connectLine2, .dotCase2, .occdot2").css("display","inline-block");
+      $("hr.case2, #occupantImage2, div.customCheckStyleCentered.case2").css("display","block");
+
+      d3.selectAll("rect.wall2").classed("outlined", false);
+      d3.selectAll("rect.wall2").classed("filled", true);
+      d3.selectAll("rect.window2").classed("white", false);
+      d3.selectAll("rect.window2").classed("blue", true);
+    }
+
+    else if ($(this).hasClass("unselected") == false) {
+      // becomes unselected
+      $(this).addClass("unselected");
+      $("#case2Label1").addClass("unselected");
+      $("#case2Label").addClass("unselected");
+
+      $("#inputs input.case2, div.case2, #sliderWrapper2, .connectLine2, .dotCase2, .occdot2, hr.case2, #occupantImage2").css("display","none");
+      $("#inputs input.case2").addClass("unselected");
+
+      d3.selectAll("rect.wall2").classed("outlined", true);
+      d3.selectAll("rect.wall2").classed("filled", false);
+      d3.selectAll("rect.window2").classed("white", true);
+      d3.selectAll("rect.window2").classed("blue", false);
+    }
+
+    // Update static tooltip text
+    thresholdDataText("dwn");
+    thresholdDataText("mrt");
+    thresholdDataText("comb");
+    updateOccupantDistanceRefLine();
+
+    });
+
+
 
     // $("#caseSelection #case3Label").on("click", function() {
     //
