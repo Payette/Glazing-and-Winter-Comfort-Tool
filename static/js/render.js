@@ -98,36 +98,36 @@ render.makeGraph = function () {
   var ppdLine3 = drawPPDThreshold(graphSvg3, ppdValue, "comb");
   drawGraph(graphSvg, "Downdraft Discomfort (PPD) - ", "dwn");
   drawGraph(graphSvg2, "Radiant Discomfort (PPD) - ", "mrt");
-  drawGraph(graphSvg3, "Downdraft Discomfort (PPD) - ", "comb");
+  //drawGraph(graphSvg3, "Downdraft Discomfort (PPD) - ", "comb");
 
   /* ------ PLOT THE DATA ------ */
   //draw occupant position line so that it's behind the points
   occupantDistanceRefLine();
   defDrawData(graphSvg, "dwn")
   defDrawData(graphSvg2, "mrt")
-  defDrawData(graphSvg3, "comb")
+  //defDrawData(graphSvg3, "comb")
 
   // call function to initialize all data points
   updateGraphPoints(graphSvg, dataset, "dotCase1", color1, "dwn");
   updateGraphPoints(graphSvg, dataset2, "dotCase2", color2, "dwn");
-  updateGraphPoints(graphSvg, dataset3, "dotCase3", color3, "dwn");
+  //updateGraphPoints(graphSvg, dataset3, "dotCase3", color3, "dwn");
   updateGraphPoints(graphSvg2, dataset, "dotCase1", color1, "mrt");
   updateGraphPoints(graphSvg2, dataset2, "dotCase2", color2, "mrt");
-  updateGraphPoints(graphSvg2, dataset3, "dotCase3", color3, "mrt");
-  updateGraphPoints(graphSvg3, dataset, "dotCase1", color1, "comb");
-  updateGraphPoints(graphSvg3, dataset2, "dotCase2", color2, "comb");
-  updateGraphPoints(graphSvg3, dataset3, "dotCase3", color3, "comb");
+//  updateGraphPoints(graphSvg2, dataset3, "dotCase3", color3, "mrt");
+  //updateGraphPoints(graphSvg3, dataset, "dotCase1", color1, "comb");
+  //updateGraphPoints(graphSvg3, dataset2, "dotCase2", color2, "comb");
+  //updateGraphPoints(graphSvg3, dataset3, "dotCase3", color3, "comb");
 
   // call function to initialize point at occupant location
   updateOccupantPoint(graphSvg, [occPointData], "occdot1", color1, "dwn");
   updateOccupantPoint(graphSvg, [occPointData2], "occdot2", color2, "dwn");
-  updateOccupantPoint(graphSvg, [occPointData3], "occdot3", color3, "dwn");
+  //updateOccupantPoint(graphSvg, [occPointData3], "occdot3", color3, "dwn");
   updateOccupantPoint(graphSvg2, [occPointData], "occdot1", color1, "mrt");
   updateOccupantPoint(graphSvg2, [occPointData2], "occdot2", color2, "mrt");
-  updateOccupantPoint(graphSvg2, [occPointData3], "occdot3", color3, "mrt");
-  updateOccupantPoint(graphSvg3, [occPointData], "occdot1", color1, "comb");
-  updateOccupantPoint(graphSvg3, [occPointData2], "occdot2", color2, "comb");
-  updateOccupantPoint(graphSvg3, [occPointData3], "occdot3", color3, "comb");
+  //updateOccupantPoint(graphSvg2, [occPointData3], "occdot3", color3, "mrt");
+  //updateOccupantPoint(graphSvg3, [occPointData], "occdot1", color1, "comb");
+  //updateOccupantPoint(graphSvg3, [occPointData2], "occdot2", color2, "comb");
+  //updateOccupantPoint(graphSvg3, [occPointData3], "occdot3", color3, "comb");
 
   // add text at occupanct location
   thresholdDataText("dwn");
@@ -135,13 +135,13 @@ render.makeGraph = function () {
   thresholdDataText("comb");
   setHover(graphSvg, "dwn");
   setHover(graphSvg2, "mrt");
-  setHover(graphSvg3, "comb");
+  //setHover(graphSvg3, "comb");
 
   // Add annoying text to credit Payette.
   // Because you gotta annoy those content theifs (sarcasm).
   addPayetteText(graphSvg);
   addPayetteText(graphSvg2);
-  addPayetteText(graphSvg3);
+  //addPayetteText(graphSvg3);
 
   function setHover (mySVG, param) {
     // Show text on hover over dot
@@ -506,23 +506,25 @@ render.makeGraph = function () {
     .attr("class","wall3")
     .attr("x", 0)
     .attr("y", 0)
-    .attr("width", function(d) {return facadeScaleWidth(case3Data.wallLen)})
-    .attr("height", function(d) {return facadeScaleHeight(case3Data.ceilingHeightValue)})
-    .attr("transform", function() {
-        return "translate(" + facMargin.left + "," + (facMargin.top + facadeScaleHeight(case3CeilingDiff)) + ")"});
+    // .attr("width", function(d) {return facadeScaleWidth(case3Data.wallLen)})
+    // .attr("height", function(d) {return facadeScaleHeight(case3Data.ceilingHeightValue)})
+    // .attr("transform", function() {
+    //     return "translate(" + facMargin.left + "," + (facMargin.top + facadeScaleHeight(case3CeilingDiff)) + ")"})
+        ;
 
   facadeSvgCase3.selectAll(".window3")
     .data(glzCoordsCase3)
     .enter()
     .append("rect")
     .attr("class", "window3")
-    .attr("x", function(d) {return (facadeScaleWidth(d[3][0])+facadeScaleWidth(case3Data.wallLen)/2)})
-    .attr("y", function(d) {return (facadeScaleHeight(case3Data.ceilingHeightValue - d[3][2]))})
-    .attr("width", facadeScaleWidth(glzWidthCase3))
-    .attr("height", facadeScaleHeight(glzHeightCase3))
-    .attr("transform", function() {
-      return "translate(" + facMargin.left + "," + (facMargin.top + facadeScaleHeight(case3CeilingDiff)) + ")";
-    });
+    // .attr("x", function(d) {return (facadeScaleWidth(d[3][0])+facadeScaleWidth(case3Data.wallLen)/2)})
+    // .attr("y", function(d) {return (facadeScaleHeight(case3Data.ceilingHeightValue - d[3][2]))})
+    // .attr("width", facadeScaleWidth(glzWidthCase3))
+    // .attr("height", facadeScaleHeight(glzHeightCase3))
+    // .attr("transform", function() {
+    //   return "translate(" + facMargin.left + "," + (facMargin.top + facadeScaleHeight(case3CeilingDiff)) + ")";
+    // })
+    ;
 
   if ($("#caseSelection #case3Label").hasClass("unselected") == true) {
     d3.selectAll("rect.wall3").classed("outlined", true);
@@ -592,48 +594,48 @@ render.makeGraph = function () {
 
     });
 
-    $("#caseSelection #case3Label").on("click", function() {
-
-      $("#case3Heading").toggleClass("greyText").toggleClass("case3Text");
-      $("#case3Button").toggleClass("unselected");
-
-
-      if ($(this).hasClass("unselected") == true) {
-        //becomes selected
-      $(this).removeClass("unselected");
-      $("#inputs input.case3").removeClass("unselected");
-
-      $("#inputs input.case3, div.case3, #sliderWrapper3, .connectLine3, .dotCase3, .occdot3").css("display","inline-block");
-      $("hr.case3, #occupantImage3, div.customCheckStyleCentered.case3").css("display","block");
-
-
-      d3.selectAll("rect.wall3").classed("outlined", false);
-      d3.selectAll("rect.wall3").classed("filled", true);
-      d3.selectAll("rect.window3").classed("white", false);
-      d3.selectAll("rect.window3").classed("blue", true);
-    }
-
-    else if ($(this).hasClass("unselected") == false) {
-      // becomes unselected
-      $(this).addClass("unselected");
-
-      $("#inputs input.case3, div.case3, #sliderWrapper3, .connectLine3, .dotCase3, .occdot3, hr.case3, #occupantImage3").css("display","none");
-
-      $("#inputs input.case2").addClass("unselected");
-
-      d3.selectAll("rect.wall3").classed("outlined", true);
-      d3.selectAll("rect.wall3").classed("filled", false);
-      d3.selectAll("rect.window3").classed("white", true);
-      d3.selectAll("rect.window3").classed("blue", false);
-    }
-
-
-    // Update static tooltip text
-    thresholdDataText("dwn");
-    thresholdDataText("mrt");
-    thresholdDataText("comb");
-    updateOccupantDistanceRefLine();
-    });
+    // $("#caseSelection #case3Label").on("click", function() {
+    //
+    //   $("#case3Heading").toggleClass("greyText").toggleClass("case3Text");
+    //   $("#case3Button").toggleClass("unselected");
+    //
+    //
+    //   if ($(this).hasClass("unselected") == true) {
+    //     //becomes selected
+    //   $(this).removeClass("unselected");
+    //   $("#inputs input.case3").removeClass("unselected");
+    //
+    //   $("#inputs input.case3, div.case3, #sliderWrapper3, .connectLine3, .dotCase3, .occdot3").css("display","inline-block");
+    //   $("hr.case3, #occupantImage3, div.customCheckStyleCentered.case3").css("display","block");
+    //
+    //
+    //   d3.selectAll("rect.wall3").classed("outlined", false);
+    //   d3.selectAll("rect.wall3").classed("filled", true);
+    //   d3.selectAll("rect.window3").classed("white", false);
+    //   d3.selectAll("rect.window3").classed("blue", true);
+    // }
+    //
+    // else if ($(this).hasClass("unselected") == false) {
+    //   // becomes unselected
+    //   $(this).addClass("unselected");
+    //
+    //   $("#inputs input.case3, div.case3, #sliderWrapper3, .connectLine3, .dotCase3, .occdot3, hr.case3, #occupantImage3").css("display","none");
+    //
+    //   $("#inputs input.case2").addClass("unselected");
+    //
+    //   d3.selectAll("rect.wall3").classed("outlined", true);
+    //   d3.selectAll("rect.wall3").classed("filled", false);
+    //   d3.selectAll("rect.window3").classed("white", true);
+    //   d3.selectAll("rect.window3").classed("blue", false);
+    // }
+    //
+    //
+    // // Update static tooltip text
+    // thresholdDataText("dwn");
+    // thresholdDataText("mrt");
+    // thresholdDataText("comb");
+    // updateOccupantDistanceRefLine();
+    // });
 
 
 
@@ -751,87 +753,87 @@ render.makeGraph = function () {
       // change values in form.
       updateOccupantImageLocation("#occupantImage", "#occupantDist", case1Data);
       updateOccupantImageLocation("#occupantImage2", "#occupantDist2", case2Data);
-      updateOccupantImageLocation("#occupantImage3", "#occupantDist3", case3Data);
+      //updateOccupantImageLocation("#occupantImage3", "#occupantDist3", case3Data);
       case1Data.occDistToWallCenter = units.M2Ft(case1Data.occDistToWallCenter);
       case2Data.occDistToWallCenter = units.M2Ft(case2Data.occDistToWallCenter);
-      case3Data.occDistToWallCenter = units.M2Ft(case3Data.occDistToWallCenter);
+      //case3Data.occDistToWallCenter = units.M2Ft(case3Data.occDistToWallCenter);
 
       case1Data.ceilingHeightValue = units.M2Ft(case1Data.ceilingHeightValue);
       $("#ceiling").val(round(case1Data.ceilingHeightValue*10)/10);
       case2Data.ceilingHeightValue = units.M2Ft(case2Data.ceilingHeightValue);
       $("#ceiling2").val(round(case2Data.ceilingHeightValue*10)/10);
-      case3Data.ceilingHeightValue = units.M2Ft(case3Data.ceilingHeightValue);
-      $("#ceiling3").val(round(case3Data.ceilingHeightValue*10)/10);
+      //case3Data.ceilingHeightValue = units.M2Ft(case3Data.ceilingHeightValue);
+      //$("#ceiling3").val(round(case3Data.ceilingHeightValue*10)/10);
 
       case1Data.wallLen = units.M2Ft(case1Data.wallLen);
       $("#wallWidth").val(round(case1Data.wallLen*10)/10);
       case2Data.wallLen = units.M2Ft(case2Data.wallLen);
       $("#wallWidth2").val(round(case2Data.wallLen*10)/10);
-      case3Data.wallLen = units.M2Ft(case3Data.wallLen);
-      $("#wallWidth3").val(round(case3Data.wallLen*10)/10);
+      //case3Data.wallLen = units.M2Ft(case3Data.wallLen);
+      //$("#wallWidth3").val(round(case3Data.wallLen*10)/10);
 
       case1Data.windowHeightValue = units.M2Ft(case1Data.windowHeightValue);
       $("#windowHeight").val(round(case1Data.windowHeightValue*10)/10);
       case2Data.windowHeightValue = units.M2Ft(case2Data.windowHeightValue);
       $("#windowHeight2").val(round(case2Data.windowHeightValue*10)/10);
-      case3Data.windowHeightValue = units.M2Ft(case3Data.windowHeightValue);
-      $("#windowHeight3").val(round(case3Data.windowHeightValue*10)/10);
+      //case3Data.windowHeightValue = units.M2Ft(case3Data.windowHeightValue);
+      //$("#windowHeight3").val(round(case3Data.windowHeightValue*10)/10);
 
       case1Data.windowWidthValue = units.M2Ft(case1Data.windowWidthValue);
       $("#windowWidth").val(round(case1Data.windowWidthValue*10)/10);
       case2Data.windowWidthValue = units.M2Ft(case2Data.windowWidthValue);
       $("#windowWidth2").val(round(case2Data.windowWidthValue*10)/10);
-      case3Data.windowWidthValue = units.M2Ft(case3Data.windowWidthValue);
-      $("#windowWidth3").val(round(case3Data.windowWidthValue*10)/10);
+    //  case3Data.windowWidthValue = units.M2Ft(case3Data.windowWidthValue);
+      //$("#windowWidth3").val(round(case3Data.windowWidthValue*10)/10);
 
       case1Data.sillHeightValue = units.M2Ft(case1Data.sillHeightValue);
       $("#sill").val(round(case1Data.sillHeightValue*10)/10);
       case2Data.sillHeightValue = units.M2Ft(case2Data.sillHeightValue);
       $("#sill2").val(round(case2Data.sillHeightValue*10)/10);
-      case3Data.sillHeightValue = units.M2Ft(case3Data.sillHeightValue);
-      $("#sill3").val(round(case3Data.sillHeightValue*10)/10);
+      //case3Data.sillHeightValue = units.M2Ft(case3Data.sillHeightValue);
+      //$("#sill3").val(round(case3Data.sillHeightValue*10)/10);
 
       case1Data.distanceWindows = units.M2Ft(case1Data.distanceWindows);
       $("#distWindow").val(round(case1Data.distanceWindows*10)/10);
       case2Data.distanceWindows = units.M2Ft(case2Data.distanceWindows);
       $("#distWindow2").val(round(case2Data.distanceWindows*10)/10);
-      case3Data.distanceWindows = units.M2Ft(case3Data.distanceWindows);
-      $("#distWindow3").val(round(case3Data.distanceWindows*10)/10);
+      //case3Data.distanceWindows = units.M2Ft(case3Data.distanceWindows);
+      //$("#distWindow3").val(round(case3Data.distanceWindows*10)/10);
 
       case1Data.uvalueValue = units.uSI2uIP(case1Data.uvalueValue);
       $("#uvalue").val(round(case1Data.uvalueValue*100)/100);
       case2Data.uvalueValue = units.uSI2uIP(case2Data.uvalueValue);
       $("#uvalue2").val(round(case2Data.uvalueValue*100)/100);
-      case3Data.uvalueValue = units.uSI2uIP(case3Data.uvalueValue);
-      $("#uvalue3").val(round(case3Data.uvalueValue*100)/100);
+      //case3Data.uvalueValue = units.uSI2uIP(case3Data.uvalueValue);
+      //$("#uvalue3").val(round(case3Data.uvalueValue*100)/100);
 
       case1Data.outdoorTempValue = units.C2F(case1Data.outdoorTempValue);
       $("#outdoortemp").val(round(case1Data.outdoorTempValue));
       case2Data.outdoorTempValue = units.C2F(case2Data.outdoorTempValue);
       $("#outdoortemp2").val(round(case2Data.outdoorTempValue));
-      case3Data.outdoorTempValue = units.C2F(case3Data.outdoorTempValue);
-      $("#outdoortemp3").val(round(case3Data.outdoorTempValue));
+      //case3Data.outdoorTempValue = units.C2F(case3Data.outdoorTempValue);
+      //$("#outdoortemp3").val(round(case3Data.outdoorTempValue));
 
       case1Data.airtempValue = units.C2F(case1Data.airtempValue);
       $("#airtemp").val(round(case1Data.airtempValue));
       case2Data.airtempValue = units.C2F(case2Data.airtempValue);
       $("#airtemp2").val(round(case2Data.airtempValue));
-      case3Data.airtempValue = units.C2F(case3Data.airtempValue);
-      $("#airtemp3").val(round(case3Data.airtempValue));
+      //case3Data.airtempValue = units.C2F(case3Data.airtempValue);
+      //$("#airtemp3").val(round(case3Data.airtempValue));
 
       case1Data.rvalueValue = units.rSI2rIP(case1Data.rvalueValue);
       $("#rvalue").val(round(case1Data.rvalueValue*100)/100);
       case2Data.rvalueValue = units.rSI2rIP(case2Data.rvalueValue);
       $("#rvalue2").val(round(case2Data.rvalueValue*100)/100);
-      case3Data.rvalueValue = units.rSI2rIP(case3Data.rvalueValue);
-      $("#rvalue3").val(round(case3Data.rvalueValue*100)/100);
+      //case3Data.rvalueValue = units.rSI2rIP(case3Data.rvalueValue);
+      //$("#rvalue3").val(round(case3Data.rvalueValue*100)/100);
 
       case1Data.airspeedValue = units.mps2fpm(case1Data.airspeedValue);
       $("#airspeed").val(round(case1Data.airspeedValue*10)/10);
       case2Data.airspeedValue = units.mps2fpm(case2Data.airspeedValue);
       $("#airspeed2").val(round(case2Data.airspeedValue*10)/10);
-      case3Data.airspeedValue = units.mps2fpm(case3Data.airspeedValue);
-      $("#airspeed3").val(round(case3Data.airspeedValue*10)/10);
+      //case3Data.airspeedValue = units.mps2fpm(case3Data.airspeedValue);
+      //$("#airspeed3").val(round(case3Data.airspeedValue*10)/10);
 
       occDistFromFacade = units.M2Ft(occDistFromFacade);
       // update occupant dist from facade slider
@@ -857,14 +859,14 @@ render.makeGraph = function () {
         .call(xAxis.ticks(6).tickValues([2, 4, 6, 8, 10, 12]));
       graphSvg2.select("#XAxisLabel")
       .text("Occupant Distance from Façade ft");
-      graphSvg3.select("#graphXAxis")
-        .call(xAxis.ticks(6).tickValues([2, 4, 6, 8, 10, 12]));
-      graphSvg3.select("#XAxisLabel")
-      .text("Occupant Distance from Façade ft");
+      // graphSvg3.select("#graphXAxis")
+      //   .call(xAxis.ticks(6).tickValues([2, 4, 6, 8, 10, 12]));
+      // graphSvg3.select("#XAxisLabel")
+      // .text("Occupant Distance from Façade ft");
 
       updateData(case1Data);
       updateData(case2Data);
-      updateData(case3Data);
+      //updateData(case3Data);
 
       updateOccupantDistanceRefLine();
     }
@@ -893,7 +895,7 @@ render.makeGraph = function () {
       // change values in form.
       updateOccupantImageLocation("#occupantImage", "#occupantDist", case1Data);
       updateOccupantImageLocation("#occupantImage2", "#occupantDist2", case2Data);
-      updateOccupantImageLocation("#occupantImage3", "#occupantDist3", case3Data);
+      //updateOccupantImageLocation("#occupantImage3", "#occupantDist3", case3Data);
       case1Data.occDistToWallCenter = units.Ft2M(case1Data.occDistToWallCenter);
       case2Data.occDistToWallCenter = units.Ft2M(case2Data.occDistToWallCenter);
       case3Data.occDistToWallCenter = units.Ft2M(case3Data.occDistToWallCenter);
@@ -902,78 +904,78 @@ render.makeGraph = function () {
       $("#ceiling").val(round(case1Data.ceilingHeightValue*100)/100);
       case2Data.ceilingHeightValue = units.Ft2M(case2Data.ceilingHeightValue);
       $("#ceiling2").val(round(case2Data.ceilingHeightValue*100)/100);
-      case3Data.ceilingHeightValue = units.Ft2M(case3Data.ceilingHeightValue);
-      $("#ceiling3").val(round(case3Data.ceilingHeightValue*100)/100);
+      //case3Data.ceilingHeightValue = units.Ft2M(case3Data.ceilingHeightValue);
+      //$("#ceiling3").val(round(case3Data.ceilingHeightValue*100)/100);
 
       case1Data.wallLen = units.Ft2M(case1Data.wallLen);
       $("#wallWidth").val(round(case1Data.wallLen*100)/100);
       case2Data.wallLen = units.Ft2M(case2Data.wallLen);
       $("#wallWidth2").val(round(case2Data.wallLen*100)/100);
-      case3Data.wallLen = units.Ft2M(case3Data.wallLen);
-      $("#wallWidth3").val(round(case3Data.wallLen*100)/100);
+      //case3Data.wallLen = units.Ft2M(case3Data.wallLen);
+      //$("#wallWidth3").val(round(case3Data.wallLen*100)/100);
 
       case1Data.windowHeightValue = units.Ft2M(case1Data.windowHeightValue);
       $("#windowHeight").val(round(case1Data.windowHeightValue*100)/100);
       case2Data.windowHeightValue = units.Ft2M(case2Data.windowHeightValue);
       $("#windowHeight2").val(round(case2Data.windowHeightValue*100)/100);
-      case3Data.windowHeightValue = units.Ft2M(case3Data.windowHeightValue);
-      $("#windowHeight3").val(round(case3Data.windowHeightValue*100)/100);
+      //case3Data.windowHeightValue = units.Ft2M(case3Data.windowHeightValue);
+      //$("#windowHeight3").val(round(case3Data.windowHeightValue*100)/100);
 
       case1Data.windowWidthValue = units.Ft2M(case1Data.windowWidthValue);
       $("#windowWidth").val(round(case1Data.windowWidthValue*100)/100);
       case2Data.windowWidthValue = units.Ft2M(case2Data.windowWidthValue);
       $("#windowWidth2").val(round(case2Data.windowWidthValue*100)/100);
-      case3Data.windowWidthValue = units.Ft2M(case3Data.windowWidthValue);
-      $("#windowWidth3").val(round(case3Data.windowWidthValue*100)/100);
+      //case3Data.windowWidthValue = units.Ft2M(case3Data.windowWidthValue);
+      //$("#windowWidth3").val(round(case3Data.windowWidthValue*100)/100);
 
       case1Data.sillHeightValue = units.Ft2M(case1Data.sillHeightValue);
       $("#sill").val(round(case1Data.sillHeightValue*100)/100);
       case2Data.sillHeightValue = units.Ft2M(case2Data.sillHeightValue);
       $("#sill2").val(round(case2Data.sillHeightValue*100)/100);
-      case3Data.sillHeightValue = units.Ft2M(case3Data.sillHeightValue);
-      $("#sill3").val(round(case3Data.sillHeightValue*100)/100);
+      //case3Data.sillHeightValue = units.Ft2M(case3Data.sillHeightValue);
+      //$("#sill3").val(round(case3Data.sillHeightValue*100)/100);
 
       case1Data.distanceWindows = units.Ft2M(case1Data.distanceWindows);
       $("#distWindow").val(round(case1Data.distanceWindows*100)/100);
       case2Data.distanceWindows = units.Ft2M(case2Data.distanceWindows);
       $("#distWindow2").val(round(case2Data.distanceWindows*100)/100);
-      case3Data.distanceWindows = units.Ft2M(case3Data.distanceWindows);
-      $("#distWindow3").val(round(case3Data.distanceWindows*100)/100);
+      //case3Data.distanceWindows = units.Ft2M(case3Data.distanceWindows);
+      //$("#distWindow3").val(round(case3Data.distanceWindows*100)/100);
 
       case1Data.uvalueValue = units.uIP2uSI(case1Data.uvalueValue);
       $("#uvalue").val(round(case1Data.uvalueValue*100)/100);
       case2Data.uvalueValue = units.uIP2uSI(case2Data.uvalueValue);
       $("#uvalue2").val(round(case2Data.uvalueValue*100)/100);
-      case3Data.uvalueValue = units.uIP2uSI(case3Data.uvalueValue);
-      $("#uvalue3").val(round(case3Data.uvalueValue*100)/100);
+      //case3Data.uvalueValue = units.uIP2uSI(case3Data.uvalueValue);
+      //$("#uvalue3").val(round(case3Data.uvalueValue*100)/100);
 
       case1Data.outdoorTempValue = units.F2C(case1Data.outdoorTempValue);
       $("#outdoortemp").val(round(case1Data.outdoorTempValue));
       case2Data.outdoorTempValue = units.F2C(case2Data.outdoorTempValue);
       $("#outdoortemp2").val(round(case2Data.outdoorTempValue));
-      case3Data.outdoorTempValue = units.F2C(case3Data.outdoorTempValue);
-      $("#outdoortemp3").val(round(case3Data.outdoorTempValue));
+    //  case3Data.outdoorTempValue = units.F2C(case3Data.outdoorTempValue);
+      //$("#outdoortemp3").val(round(case3Data.outdoorTempValue));
 
       case1Data.airtempValue = units.F2C(case1Data.airtempValue);
       $("#airtemp").val(round(case1Data.airtempValue));
       case2Data.airtempValue = units.F2C(case2Data.airtempValue);
       $("#airtemp2").val(round(case2Data.airtempValue));
-      case3Data.airtempValue = units.F2C(case3Data.airtempValue);
-      $("#airtemp3").val(round(case3Data.airtempValue));
+      //case3Data.airtempValue = units.F2C(case3Data.airtempValue);
+      //$("#airtemp3").val(round(case3Data.airtempValue));
 
       case1Data.rvalueValue = units.rIP2rSI(case1Data.rvalueValue);
       $("#rvalue").val(round(case1Data.rvalueValue*100)/100);
       case2Data.rvalueValue = units.rIP2rSI(case2Data.rvalueValue);
       $("#rvalue2").val(round(case2Data.rvalueValue*100)/100);
-      case3Data.rvalueValue = units.rIP2rSI(case3Data.rvalueValue);
-      $("#rvalue3").val(round(case3Data.rvalueValue*100)/100);
+      //case3Data.rvalueValue = units.rIP2rSI(case3Data.rvalueValue);
+      //$("#rvalue3").val(round(case3Data.rvalueValue*100)/100);
 
       case1Data.airspeedValue = units.fpm2mps(case1Data.airspeedValue);
       $("#airspeed").val(round(case1Data.airspeedValue*100)/100);
       case2Data.airspeedValue = units.fpm2mps(case2Data.airspeedValue);
       $("#airspeed2").val(round(case2Data.airspeedValue*100)/100);
-      case3Data.airspeedValue = units.fpm2mps(case3Data.airspeedValue);
-      $("#airspeed3").val(round(case3Data.airspeedValue*100)/100);
+      //case3Data.airspeedValue = units.fpm2mps(case3Data.airspeedValue);
+      //$("#airspeed3").val(round(case3Data.airspeedValue*100)/100);
 
       occDistFromFacade = units.Ft2M(occDistFromFacade);
       // update occupant dist from facade slider
@@ -998,14 +1000,14 @@ render.makeGraph = function () {
         .call(xAxis.ticks(8).tickValues([0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]));
       graphSvg2.select("#XAxisLabel")
       .text("Occupant Distance from Façade (m)");
-      graphSvg3.select("#graphXAxis")
-        .call(xAxis.ticks(8).tickValues([0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]));
-      graphSvg3.select("#XAxisLabel")
-      .text("Occupant Distance from Façade (m)");
+      //graphSvg3.select("#graphXAxis")
+        //.call(xAxis.ticks(8).tickValues([0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4]));
+      //graphSvg3.select("#XAxisLabel")
+      //.text("Occupant Distance from Façade (m)");
 
       updateData(case1Data);
       updateData(case2Data);
-      updateData(case3Data);
+      //updateData(case3Data);
 
       updateOccupantDistanceRefLine();
     }
@@ -1488,14 +1490,14 @@ render.makeGraph = function () {
     var finalDesignTemp = $("#outTempTextArea").val()
     $("#outdoortemp").val(finalDesignTemp)
     $("#outdoortemp2").val(finalDesignTemp)
-    $("#outdoortemp3").val(finalDesignTemp)
+    //$("#outdoortemp3").val(finalDesignTemp)
     case1Data.outdoorTempValue = parseFloat(finalDesignTemp)
     case2Data.outdoorTempValue = parseFloat(finalDesignTemp)
-    case3Data.outdoorTempValue = parseFloat(finalDesignTemp)
+    //case3Data.outdoorTempValue = parseFloat(finalDesignTemp)
 
     updateData(case1Data);
     updateData(case2Data);
-    updateData(case3Data);
+    //updateData(case3Data);
     $("#Outdoorpop").dialog("close");
   })
 
@@ -1635,12 +1637,12 @@ render.makeGraph = function () {
       updateOccupantImageLocation("#occupantImage2", "#occupantDist2", case2Data);
       updateData(case2Data);
     })
-    $("#occupantDist3").on("change", function(event) {
-      //assign new value
-      case3Data.occDistToWallCenter = $(this).val();
-      updateOccupantImageLocation("#occupantImage3", "#occupantDist3", case3Data);
-      updateData(case3Data);
-    })
+    // $("#occupantDist3").on("change", function(event) {
+    //   //assign new value
+    //   case3Data.occDistToWallCenter = $(this).val();
+    //   updateOccupantImageLocation("#occupantImage3", "#occupantDist3", case3Data);
+    //   updateData(case3Data);
+    // })
   }
 
   // does not work in IE, see Modernizer code above
@@ -1657,7 +1659,7 @@ render.makeGraph = function () {
 
     updateData(case1Data);
     updateData(case2Data);
-    updateData(case3Data);
+    //updateData(case3Data);
 
     thresholdDataText("dwn");
     thresholdDataText("mrt");
@@ -1735,12 +1737,12 @@ render.makeGraph = function () {
     updateOccupantImageLocation("#occupantImage2", "#occupantDist2", case2Data);
     updateData(case2Data);
   })
-  $("#occupantDist3").on("input", function(event) {
-    //assign new value
-    case3Data.occDistToWallCenter = $(this).val();
-    updateOccupantImageLocation("#occupantImage3", "#occupantDist3", case3Data);
-    updateData(case3Data);
-  })
+  // $("#occupantDist3").on("input", function(event) {
+  //   //assign new value
+  //   case3Data.occDistToWallCenter = $(this).val();
+  //   updateOccupantImageLocation("#occupantImage3", "#occupantDist3", case3Data);
+  //   updateData(case3Data);
+  // })
 
 
 
@@ -1897,10 +1899,10 @@ render.makeGraph = function () {
         case2Data.glzRatioValue = case1Data.glzRatioValue;
         $("#glazing2").val(case2Data.glzRatioValue);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.glzRatioValue = case1Data.glzRatioValue;
-        $("#glazing3").val(case3Data.glzRatioValue);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.glzRatioValue = case1Data.glzRatioValue;
+      //   $("#glazing3").val(case3Data.glzRatioValue);
+      // }
     }
     else if (triggeredChange == "sill") {
       case1Data.sillHeightValue = $(this).val();
@@ -1910,10 +1912,10 @@ render.makeGraph = function () {
         case2Data.sillHeightValue = case1Data.sillHeightValue;
         $("#sill2").val(case2Data.sillHeightValue);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.sillHeightValue = case1Data.sillHeightValue;
-        $("#sill3").val(case3Data.sillHeightValue);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.sillHeightValue = case1Data.sillHeightValue;
+      //   $("#sill3").val(case3Data.sillHeightValue);
+      // }
     }
     else if (triggeredChange == "distWindow") {
       case1Data.distanceWindows = $(this).val();
@@ -1923,10 +1925,10 @@ render.makeGraph = function () {
         case2Data.distanceWindows = case1Data.distanceWindows;
         $("#distWindow2").val(case2Data.distanceWindows);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.distanceWindows = case1Data.distanceWindows;
-        $("#distWindow3").val(case3Data.distanceWindows);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.distanceWindows = case1Data.distanceWindows;
+      //   $("#distWindow3").val(case3Data.distanceWindows);
+      // }
 
     }
 
@@ -1937,10 +1939,10 @@ render.makeGraph = function () {
         case2Data.uvalueValue = case1Data.uvalueValue;
         $("#uvalue2").val(case2Data.uvalueValue);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.uvalueValue = case1Data.uvalueValue;
-        $("#uvalue3").val(case3Data.uvalueValue);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.uvalueValue = case1Data.uvalueValue;
+      //   $("#uvalue3").val(case3Data.uvalueValue);
+      // }
     }
 
     else if (triggeredChange == "lowE") {
@@ -1950,10 +1952,10 @@ render.makeGraph = function () {
         case2Data.intLowEEmissivity = case1Data.intLowEEmissivity;
         $("#lowE2").val(case2Data.intLowEEmissivity);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.intLowEEmissivity = case1Data.intLowEEmissivity;
-        $("#lowE3").val(case3Data.intLowEEmissivity);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.intLowEEmissivity = case1Data.intLowEEmissivity;
+      //   $("#lowE3").val(case3Data.intLowEEmissivity);
+      // }
     }
     else if (triggeredChange == "outdoortemp") {
       case1Data.outdoorTempValue = $(this).val();
@@ -1962,10 +1964,10 @@ render.makeGraph = function () {
         case2Data.outdoorTempValue = case1Data.outdoorTempValue;
         $("#outdoortemp2").val(case2Data.outdoorTempValue);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.outdoorTempValue = case1Data.outdoorTempValue;
-        $("#outdoortemp3").val(case3Data.outdoorTempValue);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.outdoorTempValue = case1Data.outdoorTempValue;
+      //   $("#outdoortemp3").val(case3Data.outdoorTempValue);
+      // }
     }
     else if (triggeredChange == "airtemp") {
       case1Data.airtempValue = $(this).val();
@@ -1974,10 +1976,10 @@ render.makeGraph = function () {
         case2Data.airtempValue = case1Data.airtempValue;
         $("#airtemp2").val(case2Data.airtempValue);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.airtempValue = case1Data.airtempValue;
-        $("#airtemp3").val(case3Data.airtempValue);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.airtempValue = case1Data.airtempValue;
+      //   $("#airtemp3").val(case3Data.airtempValue);
+      // }
     }
     else if (triggeredChange == "humidity") {
       case1Data.humidityValue = $(this).val();
@@ -1986,10 +1988,10 @@ render.makeGraph = function () {
         case2Data.humidityValue = case1Data.humidityValue;
         $("#humidity2").val(case2Data.humidityValue);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.humidityValue = case1Data.humidityValue;
-        $("#humidity3").val(case3Data.humidityValue);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.humidityValue = case1Data.humidityValue;
+      //   $("#humidity3").val(case3Data.humidityValue);
+      // }
     }
     else if (triggeredChange == "rvalue") {
       case1Data.rvalueValue = $(this).val();
@@ -1998,10 +2000,10 @@ render.makeGraph = function () {
         case2Data.rvalueValue = case1Data.rvalueValue;
         $("#rvalue2").val(case2Data.rvalueValue);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.rvalueValue = case1Data.rvalueValue;
-        $("#rvalue3").val(case3Data.rvalueValue);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.rvalueValue = case1Data.rvalueValue;
+      //   $("#rvalue3").val(case3Data.rvalueValue);
+      // }
     }
     else if (triggeredChange == "airspeed") {
       case1Data.airspeedValue = $(this).val();
@@ -2010,10 +2012,10 @@ render.makeGraph = function () {
         case2Data.airspeedValue = case1Data.airspeedValue;
         $("#airspeed2").val(case2Data.airspeedValue);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.airspeedValue = case1Data.airspeedValue;
-        $("#airspeed3").val(case3Data.airspeedValue);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.airspeedValue = case1Data.airspeedValue;
+      //   $("#airspeed3").val(case3Data.airspeedValue);
+      // }
     }
     else if (triggeredChange == "clothing") {
       case1Data.clothingValue = $(this).val();
@@ -2022,10 +2024,10 @@ render.makeGraph = function () {
         case2Data.clothingValue = case1Data.clothingValue;
         $("#clothing2").val(case2Data.clothingValue);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.clothingValue = case1Data.clothingValue;
-        $("#clothing3").val(case3Data.clothingValue);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.clothingValue = case1Data.clothingValue;
+      //   $("#clothing3").val(case3Data.clothingValue);
+      // }
     }
     else if (triggeredChange == "metabolic") {
       case1Data.metabolic = $(this).val();
@@ -2034,10 +2036,10 @@ render.makeGraph = function () {
         case2Data.metabolic = case1Data.metabolic;
         $("#metabolic2").val(case2Data.metabolic);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.metabolic = case1Data.metabolic;
-        $("#metabolic3").val(case3Data.metabolic);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.metabolic = case1Data.metabolic;
+      //   $("#metabolic3").val(case3Data.metabolic);
+      // }
     }
 
     else {
@@ -2049,9 +2051,9 @@ render.makeGraph = function () {
     if ($("#caseSelection #case2Label").hasClass("unselected") == true){
       updateData(case2Data);
     }
-    if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-      updateData(case3Data);
-    }
+    // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+    //   updateData(case3Data);
+    // }
 
   })
   $("#lowECheck").change(function(event) {
@@ -2075,15 +2077,15 @@ render.makeGraph = function () {
         $("#lowE2").removeClass("inactive");
         $("#checkLowE2").removeClass("unselected");
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.intLowEChecked = case1Data.intLowEChecked;
-        $("#lowE3").val(0.2);
-
-        case3Data.intLowEEmissivity = 0.2;
-
-        $("#lowE3").removeClass("inactive");
-        $("#checkLowE3").removeClass("unselected");
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.intLowEChecked = case1Data.intLowEChecked;
+      //   $("#lowE3").val(0.2);
+      //
+      //   case3Data.intLowEEmissivity = 0.2;
+      //
+      //   $("#lowE3").removeClass("inactive");
+      //   $("#checkLowE3").removeClass("unselected");
+      // }
 
 
     } else if (($("#lowECheck").is(":checked")) == false) {
@@ -2100,13 +2102,13 @@ render.makeGraph = function () {
         $("#lowE2").addClass("inactive");
         $("#checkLowE2").addClass("unselected");
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.intLowEChecked = case1Data.intLowEChecked;
-        $("#lowE3").val(" ");
-
-        $("#lowE3").addClass("inactive");
-        $("#checkLowE3").addClass("unselected");
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.intLowEChecked = case1Data.intLowEChecked;
+      //   $("#lowE3").val(" ");
+      //
+      //   $("#lowE3").addClass("inactive");
+      //   $("#checkLowE3").addClass("unselected");
+      // }
 
 
     }
@@ -2116,9 +2118,9 @@ render.makeGraph = function () {
     if ($("#caseSelection #case2Label").hasClass("unselected") == true){
       updateData(case2Data);
     }
-    if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-      updateData(case3Data);
-    }
+    // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+    //   updateData(case3Data);
+    // }
   })
 
 
@@ -2132,11 +2134,11 @@ render.makeGraph = function () {
         $("#ceiling2").val(case2Data.ceilingHeightValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.ceilingHeightValue = case1Data.ceilingHeightValue;
-        $("#ceiling3").val(case3Data.ceilingHeightValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.ceilingHeightValue = case1Data.ceilingHeightValue;
+      //   $("#ceiling3").val(case3Data.ceilingHeightValue);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
     })
@@ -2152,11 +2154,11 @@ render.makeGraph = function () {
         $("#wallWidth2").val(case2Data.wallLen);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.wallLen = case1Data.wallLen;
-        $("#wallWidth3").val(case3Data.wallLen);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.wallLen = case1Data.wallLen;
+      //   $("#wallWidth3").val(case3Data.wallLen);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
 
@@ -2171,11 +2173,11 @@ render.makeGraph = function () {
         $("#windowHeight2").val(case2Data.windowHeightValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.windowHeightValue = case1Data.windowHeightValue;
-        $("#windowHeight3").val(case3Data.windowHeightValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.windowHeightValue = case1Data.windowHeightValue;
+      //   $("#windowHeight3").val(case3Data.windowHeightValue);
+      //   updateData(case3Data);
+      // }
 
 
       updateData(case1Data);
@@ -2190,11 +2192,11 @@ render.makeGraph = function () {
         $("#windowWidth2").val(case2Data.windowWidthValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.windowWidthValue = case1Data.windowWidthValue;
-        $("#windowWidth3").val(case3Data.windowWidthValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.windowWidthValue = case1Data.windowWidthValue;
+      //   $("#windowWidth3").val(case3Data.windowWidthValue);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
     })
@@ -2208,11 +2210,11 @@ render.makeGraph = function () {
         $("#glazing2").val(case2Data.glzRatioValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.glzRatioValue = case1Data.glzRatioValue;
-        $("#glazing3").val(case3Data.glzRatioValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.glzRatioValue = case1Data.glzRatioValue;
+      //   $("#glazing3").val(case3Data.glzRatioValue);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
     })
@@ -2226,11 +2228,11 @@ render.makeGraph = function () {
         $("#sill2").val(case2Data.sillHeightValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.sillHeightValue = case1Data.sillHeightValue;
-        $("#sill3").val(case3Data.sillHeightValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.sillHeightValue = case1Data.sillHeightValue;
+      //   $("#sill3").val(case3Data.sillHeightValue);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
     })
@@ -2244,11 +2246,11 @@ render.makeGraph = function () {
         $("#distWindow2").val(case2Data.distanceWindows);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.distanceWindows = case1Data.distanceWindows;
-        $("#distWindow3").val(case3Data.distanceWindows);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.distanceWindows = case1Data.distanceWindows;
+      //   $("#distWindow3").val(case3Data.distanceWindows);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
     })
@@ -2261,11 +2263,11 @@ render.makeGraph = function () {
         $("#uvalue2").val(case2Data.uvalueValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.uvalueValue = case1Data.uvalueValue;
-        $("#uvalue3").val(case3Data.uvalueValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.uvalueValue = case1Data.uvalueValue;
+      //   $("#uvalue3").val(case3Data.uvalueValue);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
     })
@@ -2278,11 +2280,11 @@ render.makeGraph = function () {
         $("#lowE2").val(case2Data.intLowEEmissivity);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.intLowEEmissivity = case1Data.intLowEEmissivity;
-        $("#lowE3").val(case3Data.intLowEEmissivity);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.intLowEEmissivity = case1Data.intLowEEmissivity;
+      //   $("#lowE3").val(case3Data.intLowEEmissivity);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
     })
@@ -2295,11 +2297,11 @@ render.makeGraph = function () {
         $("#outdoortemp2").val(case2Data.outdoorTempValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.outdoorTempValue = case1Data.outdoorTempValue;
-        $("#outdoortemp3").val(case3Data.outdoorTempValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.outdoorTempValue = case1Data.outdoorTempValue;
+      //   $("#outdoortemp3").val(case3Data.outdoorTempValue);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
     })
@@ -2312,11 +2314,11 @@ render.makeGraph = function () {
         $("#airtemp2").val(case2Data.airtempValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.airtempValue = case1Data.airtempValue;
-        $("#airtemp3").val(case3Data.airtempValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.airtempValue = case1Data.airtempValue;
+      //   $("#airtemp3").val(case3Data.airtempValue);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
     })
@@ -2329,11 +2331,11 @@ render.makeGraph = function () {
         $("#humidity2").val(case2Data.humidityValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.humidityValue = case1Data.humidityValue;
-        $("#humidity3").val(case3Data.humidityValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.humidityValue = case1Data.humidityValue;
+      //   $("#humidity3").val(case3Data.humidityValue);
+      //   updateData(case3Data);
+      // }
 
       updateData(case1Data);
     })
@@ -2346,11 +2348,11 @@ render.makeGraph = function () {
         $("#rvalue2").val(case2Data.rvalueValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.rvalueValue = case1Data.rvalueValue;
-        $("#rvalue3").val(case3Data.rvalueValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.rvalueValue = case1Data.rvalueValue;
+      //   $("#rvalue3").val(case3Data.rvalueValue);
+      //   updateData(case3Data);
+      // }
       updateData(case1Data);
     })
 
@@ -2361,11 +2363,11 @@ render.makeGraph = function () {
         $("#airspeed2").val(case2Data.airspeedValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.airspeedValue = case1Data.airspeedValue;
-        $("#airspeed3").val(case3Data.airspeedValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.airspeedValue = case1Data.airspeedValue;
+      //   $("#airspeed3").val(case3Data.airspeedValue);
+      //   updateData(case3Data);
+      // }
       updateData(case1Data);
     })
 
@@ -2376,11 +2378,11 @@ render.makeGraph = function () {
         $("#clothing2").val(case2Data.clothingValue);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.clothingValue = case1Data.clothingValue;
-        $("#clothing3").val(case3Data.clothingValue);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.clothingValue = case1Data.clothingValue;
+      //   $("#clothing3").val(case3Data.clothingValue);
+      //   updateData(case3Data);
+      // }
       updateData(case1Data);
     })
 
@@ -2391,11 +2393,11 @@ render.makeGraph = function () {
         $("#metabolic2").val(case2Data.metabolic);
         updateData(case2Data);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == true){
-        case3Data.metabolic = case1Data.metabolic;
-        $("#metabolic3").val(case3Data.metabolic);
-        updateData(case3Data);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == true){
+      //   case3Data.metabolic = case1Data.metabolic;
+      //   $("#metabolic3").val(case3Data.metabolic);
+      //   updateData(case3Data);
+      // }
       updateData(case1Data);
     })
 
@@ -2593,193 +2595,193 @@ render.makeGraph = function () {
 
 
   // Case 3 - Changes based on typed inputs
-  $("#ceiling3, #wallWidth3, #windowHeight3, #windowWidth3, #glazing3, #sill3, #distWindow3, #uvalue3, #lowE3, #outdoortemp3, #airtemp3, #humidity3, #airspeed3, #clothing3, #metabolic3, #rvalue3").focusout(function(event) {
-
-    //figure out what input changed
-    var triggeredChange = event.target.id;
-
-
-    if(triggeredChange == "ceiling3") {
-      case3Data.ceilingHeightValue = $(this).val();
-      changedVar = "ceilingHeightValue";
-    }
-    else if(triggeredChange == "wallWidth3") {
-      case3Data.wallLen = $(this).val();
-      changedVar = "wallLen";
-      $("#occupantDist3").attr("max", case3Data.wallLen/2);
-
-    }
-
-    else if (triggeredChange == "windowHeight3") {
-      case3Data.windowHeightValue = $(this).val();
-      changedVar = "windowHeightValue";
-    }
-    else if (triggeredChange == "windowWidth3") {
-      case3Data.windowWidthValue = $(this).val();
-      changedVar = "windowWidthValue";
-    }
-    else if (triggeredChange == "glazing3") {
-      case3Data.glzRatioValue = $(this).val();
-      changedVar = "glzRatioValue";
-    }
-    else if (triggeredChange == "sill3") {
-      changedVar = "sillHeightValue"
-      case3Data.sillHeightValue = $(this).val();
-    }
-    else if (triggeredChange == "distWindow3") {
-      case3Data.distanceWindows = $(this).val();
-      changedVar = "distanceWindows";
-    }
-
-    else if (triggeredChange == "uvalue3") {
-      case3Data.uvalueValue = $(this).val();
-    }
-    else if (triggeredChange == "lowE3") {
-      case3Data.intLowEEmissivity = $(this).val();
-    }
-    else if (triggeredChange == "rvalue3") {
-      case3Data.rvalueValue = $(this).val();
-    }
-    else if (triggeredChange == "outdoortemp3") {
-      case3Data.outdoorTempValue = $(this).val();
-    }
-    else if (triggeredChange == "airtemp3") {
-      case3Data.airtempValue = $(this).val();
-    }
-    else if (triggeredChange == "humidity3") {
-      case3Data.humidityValue = $(this).val();
-    }
-    else if (triggeredChange == "rvalue3") {
-      case3Data.rvalueValue = $(this).val();
-    }
-    else if (triggeredChange == "airspeed3") {
-      case3Data.airspeedValue = $(this).val();
-    }
-    else if (triggeredChange == "clothing3") {
-      case3Data.clothingValue = $(this).val();
-    }
-    else if (triggeredChange == "metabolic3") {
-      case3Data.metabolic = $(this).val();
-    }
-
-    else {
-      alert("Don't know what changed!");
-    }
-
-
-    updateData(case3Data);
-  })
-
-  $("#lowECheck3").change(function(event) {
-    if (($("#lowECheck3").is(":checked")) == true) {
-      case3Data.intLowEChecked = true;
-      $("#lowE3").val(0.2);
-      case3Data.intLowEEmissivity = 0.2;
-
-      $("#lowE3").removeClass("inactive");
-      $("#lowELabel3").removeClass("inactive");
-      $("#checkLowE3").removeClass("unselected");
-
-    } else if (($("#lowECheck3").is(":checked")) == false) {
-      case3Data.intLowEChecked = false;
-      $("#lowE3").val(" ");
-      $("#lowE3").addClass("inactive");
-      $("#lowELabel3").addClass("inactive");
-      $("#checkLowE3").addClass("unselected");
-    }
-
-    updateData(case3Data);
-  })
-
-  // Case 3 - Changes based on increment buttons
-    $("#ceiling3").on("spin", function(event, ui) {
-      case3Data.ceilingHeightValue = ui.value;
-      changedVar = "ceilingHeightValue";
-      updateData(case3Data);
-    })
-
-    $("#wallWidth3").on("spin", function(event, ui) {
-      case3Data.wallLen = ui.value;
-      changedVar = "wallLen";
-      $("#occupantDist3").attr("max", case3Data.wallLen/2);
-      updateData(case3Data);
-    })
-
-
-    $("#windowHeight3").on("spin", function(event, ui) {
-      case3Data.windowHeightValue = ui.value;
-      changedVar = "windowHeightValue";
-      updateData(case3Data);
-    })
-
-    $("#windowWidth3").on("spin", function(event, ui) {
-      case3Data.windowWidthValue = ui.value;
-      changedVar = "windowWidthValue";
-      updateData(case3Data);
-    })
-
-    $("#glazing3").on("spin", function(event, ui) {
-      case3Data.glzRatioValue = ui.value;
-      changedVar = "glzRatioValue";
-      updateData(case3Data);
-    })
-
-    $("#sill3").on("spin", function(event, ui) {
-      case3Data.sillHeightValue = ui.value;
-      changedVar = "sillHeightValue"
-      updateData(case3Data);
-    })
-
-    $("#distWindow3").on("spin", function(event, ui) {
-      case3Data.distanceWindows = ui.value;
-      changedVar = "distanceWindows";
-      updateData(case3Data);
-    })
-
-    $("#uvalue3").on("spin", function(event, ui) {
-      case3Data.uvalueValue = ui.value;
-
-      updateData(case3Data);
-    })
-
-    $("#lowE3").on("spin", function(event, ui) {
-      case3Data.intLowEEmissivity = ui.value;
-
-      updateData(case3Data);
-    })
-
-    $("#outdoortemp3").on("spin", function(event, ui) {
-      case3Data.outdoorTempValue = ui.value;
-
-      updateData(case3Data);
-    })
-
-    $("#airtemp3").on("spin", function(event, ui) {
-      case3Data.airtempValue = ui.value;
-
-      updateData(case3Data);
-    })
-    $("#humidity3").on("spin", function(event, ui) {
-      case3Data.humidityValue = ui.value;
-
-      updateData(case3Data);
-    })
-    $("#rvalue3").on("spin", function(event, ui) {
-      case3Data.rvalueValue = ui.value;
-      updateData(case3Data);
-    })
-    $("#airspeed3").on("spin", function(event, ui) {
-      case3Data.airspeedValue = ui.value;
-      updateData(case3Data);
-    })
-    $("#clothing3").on("spin", function(event, ui) {
-      case3Data.clothingValue = ui.value;
-      updateData(case3Data);
-    })
-    $("#metabolic3").on("spin", function(event, ui) {
-      case3Data.metabolic = ui.value;
-      updateData(case3Data);
-    })
+  // $("#ceiling3, #wallWidth3, #windowHeight3, #windowWidth3, #glazing3, #sill3, #distWindow3, #uvalue3, #lowE3, #outdoortemp3, #airtemp3, #humidity3, #airspeed3, #clothing3, #metabolic3, #rvalue3").focusout(function(event) {
+  //
+  //   //figure out what input changed
+  //   var triggeredChange = event.target.id;
+  //
+  //
+  //   if(triggeredChange == "ceiling3") {
+  //     case3Data.ceilingHeightValue = $(this).val();
+  //     changedVar = "ceilingHeightValue";
+  //   }
+  //   else if(triggeredChange == "wallWidth3") {
+  //     case3Data.wallLen = $(this).val();
+  //     changedVar = "wallLen";
+  //     $("#occupantDist3").attr("max", case3Data.wallLen/2);
+  //
+  //   }
+  //
+  //   else if (triggeredChange == "windowHeight3") {
+  //     case3Data.windowHeightValue = $(this).val();
+  //     changedVar = "windowHeightValue";
+  //   }
+  //   else if (triggeredChange == "windowWidth3") {
+  //     case3Data.windowWidthValue = $(this).val();
+  //     changedVar = "windowWidthValue";
+  //   }
+  //   else if (triggeredChange == "glazing3") {
+  //     case3Data.glzRatioValue = $(this).val();
+  //     changedVar = "glzRatioValue";
+  //   }
+  //   else if (triggeredChange == "sill3") {
+  //     changedVar = "sillHeightValue"
+  //     case3Data.sillHeightValue = $(this).val();
+  //   }
+  //   else if (triggeredChange == "distWindow3") {
+  //     case3Data.distanceWindows = $(this).val();
+  //     changedVar = "distanceWindows";
+  //   }
+  //
+  //   else if (triggeredChange == "uvalue3") {
+  //     case3Data.uvalueValue = $(this).val();
+  //   }
+  //   else if (triggeredChange == "lowE3") {
+  //     case3Data.intLowEEmissivity = $(this).val();
+  //   }
+  //   else if (triggeredChange == "rvalue3") {
+  //     case3Data.rvalueValue = $(this).val();
+  //   }
+  //   else if (triggeredChange == "outdoortemp3") {
+  //     case3Data.outdoorTempValue = $(this).val();
+  //   }
+  //   else if (triggeredChange == "airtemp3") {
+  //     case3Data.airtempValue = $(this).val();
+  //   }
+  //   else if (triggeredChange == "humidity3") {
+  //     case3Data.humidityValue = $(this).val();
+  //   }
+  //   else if (triggeredChange == "rvalue3") {
+  //     case3Data.rvalueValue = $(this).val();
+  //   }
+  //   else if (triggeredChange == "airspeed3") {
+  //     case3Data.airspeedValue = $(this).val();
+  //   }
+  //   else if (triggeredChange == "clothing3") {
+  //     case3Data.clothingValue = $(this).val();
+  //   }
+  //   else if (triggeredChange == "metabolic3") {
+  //     case3Data.metabolic = $(this).val();
+  //   }
+  //
+  //   else {
+  //     alert("Don't know what changed!");
+  //   }
+  //
+  //
+  //   updateData(case3Data);
+  // })
+  //
+  // $("#lowECheck3").change(function(event) {
+  //   if (($("#lowECheck3").is(":checked")) == true) {
+  //     case3Data.intLowEChecked = true;
+  //     $("#lowE3").val(0.2);
+  //     case3Data.intLowEEmissivity = 0.2;
+  //
+  //     $("#lowE3").removeClass("inactive");
+  //     $("#lowELabel3").removeClass("inactive");
+  //     $("#checkLowE3").removeClass("unselected");
+  //
+  //   } else if (($("#lowECheck3").is(":checked")) == false) {
+  //     case3Data.intLowEChecked = false;
+  //     $("#lowE3").val(" ");
+  //     $("#lowE3").addClass("inactive");
+  //     $("#lowELabel3").addClass("inactive");
+  //     $("#checkLowE3").addClass("unselected");
+  //   }
+  //
+  //   updateData(case3Data);
+  // })
+  //
+  // // Case 3 - Changes based on increment buttons
+  //   $("#ceiling3").on("spin", function(event, ui) {
+  //     case3Data.ceilingHeightValue = ui.value;
+  //     changedVar = "ceilingHeightValue";
+  //     updateData(case3Data);
+  //   })
+  //
+  //   $("#wallWidth3").on("spin", function(event, ui) {
+  //     case3Data.wallLen = ui.value;
+  //     changedVar = "wallLen";
+  //     $("#occupantDist3").attr("max", case3Data.wallLen/2);
+  //     updateData(case3Data);
+  //   })
+  //
+  //
+  //   $("#windowHeight3").on("spin", function(event, ui) {
+  //     case3Data.windowHeightValue = ui.value;
+  //     changedVar = "windowHeightValue";
+  //     updateData(case3Data);
+  //   })
+  //
+  //   $("#windowWidth3").on("spin", function(event, ui) {
+  //     case3Data.windowWidthValue = ui.value;
+  //     changedVar = "windowWidthValue";
+  //     updateData(case3Data);
+  //   })
+  //
+  //   $("#glazing3").on("spin", function(event, ui) {
+  //     case3Data.glzRatioValue = ui.value;
+  //     changedVar = "glzRatioValue";
+  //     updateData(case3Data);
+  //   })
+  //
+  //   $("#sill3").on("spin", function(event, ui) {
+  //     case3Data.sillHeightValue = ui.value;
+  //     changedVar = "sillHeightValue"
+  //     updateData(case3Data);
+  //   })
+  //
+  //   $("#distWindow3").on("spin", function(event, ui) {
+  //     case3Data.distanceWindows = ui.value;
+  //     changedVar = "distanceWindows";
+  //     updateData(case3Data);
+  //   })
+  //
+  //   $("#uvalue3").on("spin", function(event, ui) {
+  //     case3Data.uvalueValue = ui.value;
+  //
+  //     updateData(case3Data);
+  //   })
+  //
+  //   $("#lowE3").on("spin", function(event, ui) {
+  //     case3Data.intLowEEmissivity = ui.value;
+  //
+  //     updateData(case3Data);
+  //   })
+  //
+  //   $("#outdoortemp3").on("spin", function(event, ui) {
+  //     case3Data.outdoorTempValue = ui.value;
+  //
+  //     updateData(case3Data);
+  //   })
+  //
+  //   $("#airtemp3").on("spin", function(event, ui) {
+  //     case3Data.airtempValue = ui.value;
+  //
+  //     updateData(case3Data);
+  //   })
+  //   $("#humidity3").on("spin", function(event, ui) {
+  //     case3Data.humidityValue = ui.value;
+  //
+  //     updateData(case3Data);
+  //   })
+  //   $("#rvalue3").on("spin", function(event, ui) {
+  //     case3Data.rvalueValue = ui.value;
+  //     updateData(case3Data);
+  //   })
+  //   $("#airspeed3").on("spin", function(event, ui) {
+  //     case3Data.airspeedValue = ui.value;
+  //     updateData(case3Data);
+  //   })
+  //   $("#clothing3").on("spin", function(event, ui) {
+  //     case3Data.clothingValue = ui.value;
+  //     updateData(case3Data);
+  //   })
+  //   $("#metabolic3").on("spin", function(event, ui) {
+  //     case3Data.metabolic = ui.value;
+  //     updateData(case3Data);
+  //   })
 
 
 
@@ -2874,33 +2876,33 @@ render.makeGraph = function () {
       dataset2 = newDataset
     }
 
-    else if (object == case3Data) {
-      $("#windowWidth3").val(Math.round(object.windowWidthValue * 100) / 100);
-      $("#glazing3").val((Math.round(object.glzRatioValue)));
-      $("#windowHeight3").val(Math.round(object.windowHeightValue * 100) / 100);
-      $("#sill3").val(Math.round(object.sillHeightValue * 100) / 100);
-      $("#distWindow3").val(Math.round(object.distanceWindows * 100) / 100);
-
-      glzCoordsCase3 = newGlzCoords;
-      glzWidthCase3 = newGlzWidth;
-      glzHeightCase3 = newGlzHeight;
-
-      occPointData3 = newOccLocData;
-
-      condensation3 = newCondensation;
-      checkCondensation(condensation1, condensation2, condensation3);
-
-      // update data points
-      updateGraphPoints(graphSvg, newDataset, "dotCase3", color3, "dwn");
-      updateGraphPoints(graphSvg2, newDataset, "dotCase3", color3, "mrt");
-      updateGraphPoints(graphSvg3, newDataset, "dotCase3", color3, "comb");
-      updateOccupantPoint(graphSvg, [occPointData3], "occdot3", color3, "dwn");
-      updateOccupantPoint(graphSvg2, [occPointData3], "occdot3", color3, "mrt");
-      updateOccupantPoint(graphSvg3, [occPointData3], "occdot3", color3, "comb");
-      updateConnectedLine(newDataset, ".connectLine3");
-      updateOccupantDistanceRefLine();
-      dataset3 = newDataset
-    }
+    // else if (object == case3Data) {
+    //   $("#windowWidth3").val(Math.round(object.windowWidthValue * 100) / 100);
+    //   $("#glazing3").val((Math.round(object.glzRatioValue)));
+    //   $("#windowHeight3").val(Math.round(object.windowHeightValue * 100) / 100);
+    //   $("#sill3").val(Math.round(object.sillHeightValue * 100) / 100);
+    //   $("#distWindow3").val(Math.round(object.distanceWindows * 100) / 100);
+    //
+    //   glzCoordsCase3 = newGlzCoords;
+    //   glzWidthCase3 = newGlzWidth;
+    //   glzHeightCase3 = newGlzHeight;
+    //
+    //   occPointData3 = newOccLocData;
+    //
+    //   condensation3 = newCondensation;
+    //   checkCondensation(condensation1, condensation2, condensation3);
+    //
+    //   // update data points
+    //   updateGraphPoints(graphSvg, newDataset, "dotCase3", color3, "dwn");
+    //   updateGraphPoints(graphSvg2, newDataset, "dotCase3", color3, "mrt");
+    //   updateGraphPoints(graphSvg3, newDataset, "dotCase3", color3, "comb");
+    //   updateOccupantPoint(graphSvg, [occPointData3], "occdot3", color3, "dwn");
+    //   updateOccupantPoint(graphSvg2, [occPointData3], "occdot3", color3, "mrt");
+    //   updateOccupantPoint(graphSvg3, [occPointData3], "occdot3", color3, "comb");
+    //   updateConnectedLine(newDataset, ".connectLine3");
+    //   updateOccupantDistanceRefLine();
+    //   dataset3 = newDataset
+    // }
 
     autocalcUValues();
 
@@ -2918,18 +2920,18 @@ render.makeGraph = function () {
     // Re-run the functions with the new inputs.
     var fullDataCase1 = script.computeData(case1Data);
     var fullDataCase2 = script.computeData(case2Data);
-    var fullDataCase3 = script.computeData(case3Data);
+    //var fullDataCase3 = script.computeData(case3Data);
 
     //Compute the U-Value required to make the occupant comfortable.
     var numPtsLen = (fullDataCase1.wallViews.length)-1
     case1Data.calcUVal = uVal.uValFinal(fullDataCase1.wallViews[numPtsLen], fullDataCase1.glzViews[numPtsLen], fullDataCase1.facadeDist[numPtsLen], fullDataCase1.dwnPPDFac, parseFloat(case1Data.windowHeightValue), parseFloat(case1Data.sillHeightValue), case1Data.airtempValue, case1Data.outdoorTempValue, case1Data.rvalueValue, case1Data.intLowEChecked, case1Data.intLowEEmissivity, case1Data.airspeedValue, case1Data.humidityValue, case1Data.metabolic, case1Data.clothingValue, ppdValue, ppdValue2);
     case2Data.calcUVal = uVal.uValFinal(fullDataCase2.wallViews[numPtsLen], fullDataCase2.glzViews[numPtsLen], fullDataCase2.facadeDist[numPtsLen], fullDataCase2.dwnPPDFac, parseFloat(case2Data.windowHeightValue), parseFloat(case2Data.sillHeightValue), case2Data.airtempValue, case2Data.outdoorTempValue, case2Data.rvalueValue, case2Data.intLowEChecked, case2Data.intLowEEmissivity, case2Data.airspeedValue, case2Data.humidityValue, case2Data.metabolic, case2Data.clothingValue, ppdValue, ppdValue2);
-    case3Data.calcUVal = uVal.uValFinal(fullDataCase3.wallViews[numPtsLen], fullDataCase3.glzViews[numPtsLen], fullDataCase3.facadeDist[numPtsLen], fullDataCase3.dwnPPDFac, parseFloat(case3Data.windowHeightValue), parseFloat(case3Data.sillHeightValue), case3Data.airtempValue, case3Data.outdoorTempValue, case3Data.rvalueValue, case3Data.intLowEChecked, case3Data.intLowEEmissivity, case3Data.airspeedValue, case3Data.humidityValue, case3Data.metabolic, case3Data.clothingValue, ppdValue, ppdValue2);
+    //case3Data.calcUVal = uVal.uValFinal(fullDataCase3.wallViews[numPtsLen], fullDataCase3.glzViews[numPtsLen], fullDataCase3.facadeDist[numPtsLen], fullDataCase3.dwnPPDFac, parseFloat(case3Data.windowHeightValue), parseFloat(case3Data.sillHeightValue), case3Data.airtempValue, case3Data.outdoorTempValue, case3Data.rvalueValue, case3Data.intLowEChecked, case3Data.intLowEEmissivity, case3Data.airspeedValue, case3Data.humidityValue, case3Data.metabolic, case3Data.clothingValue, ppdValue, ppdValue2);
 
     // Update the value in the form.
     $("#calcuvalue").val(Math.round(case1Data.calcUVal * 100) / 100);
     $("#calcuvalue2").val(Math.round(case2Data.calcUVal * 100) / 100);
-    $("#calcuvalue3").val(Math.round(case3Data.calcUVal * 100) / 100);
+    //$("#calcuvalue3").val(Math.round(case3Data.calcUVal * 100) / 100);
 
     if (case1Data.calcUVal <= 0.01 || case2Data.calcUVal <= 0.01 || case3Data.calcUVal <= 0.01) {
       $("#uvaluePop").css("display","block");
@@ -2940,9 +2942,9 @@ render.makeGraph = function () {
       if (case2Data.calcUVal <= 0.01) {
         $("#calcuvalue2").css("color", "#f72734");
       }
-      if (case3Data.calcUVal <= 0.01) {
-        $("#calcuvalue3").css("color", "#f72734");
-      }
+      // if (case3Data.calcUVal <= 0.01) {
+      //   $("#calcuvalue3").css("color", "#f72734");
+      // }
     } else {
       $("#uvaluePop").css("display","none");
       $("#calcuvalue, #calcuvalue2, #calcuvalue3").css("color", "#ADADAD");
@@ -2967,11 +2969,11 @@ render.makeGraph = function () {
         $("#condRisk2").removeClass("alert").val("NO");
       }
 
-      if (conValue3 != "none") {
-        $("#condRisk3").addClass("alert").val("YES");
-      } else {
-        $("#condRisk3").removeClass("alert").val("NO");
-      }
+      // if (conValue3 != "none") {
+      //   $("#condRisk3").addClass("alert").val("YES");
+      // } else {
+      //   $("#condRisk3").removeClass("alert").val("NO");
+      // }
     }
 
     if (conValue1 == "none" && conValue2 == "none" && conValue3 == "none") {
@@ -3056,11 +3058,11 @@ render.makeGraph = function () {
       $(".connectLine2, .dotCase2").css("display","inline-block");
     }
 
-    if ($("#caseSelection #case3Label").hasClass("unselected") == true) {
-      $(".connectLine3, .dotCase3").css("display","none");
-    } else {
-      $(".connectLine3, .dotCase3").css("display","inline-block");
-    }
+    // if ($("#caseSelection #case3Label").hasClass("unselected") == true) {
+    //   $(".connectLine3, .dotCase3").css("display","none");
+    // } else {
+    //   $(".connectLine3, .dotCase3").css("display","inline-block");
+    // }
   }
 
   function findMaxVisiblePPD() {
@@ -3149,7 +3151,7 @@ render.makeGraph = function () {
 
     d3.selectAll(".occupantLine").classed("draggable", true);
     d3.selectAll(".occupantLine2").classed("draggable", true);
-    d3.selectAll(".occupantLine3").classed("draggable", true);
+    //d3.selectAll(".occupantLine3").classed("draggable", true);
   }
 
   function updateOccupantDistanceRefLine() {
@@ -3258,11 +3260,11 @@ render.makeGraph = function () {
       $(".occdot2").css("display","inline-block");
     }
 
-    if ($("#caseSelection #case3Label").hasClass("unselected") == true) {
-      $(".occdot3").css("display","none");
-    } else {
-      $(".occdot3").css("display","inline-block");
-    }
+    // if ($("#caseSelection #case3Label").hasClass("unselected") == true) {
+    //   $(".occdot3").css("display","none");
+    // } else {
+    //   $(".occdot3").css("display","inline-block");
+    // }
   }
 
 
@@ -3368,7 +3370,7 @@ render.makeGraph = function () {
 
     var case1Text = occupantPositionText(occPointData, "case1Text", "Case 1", param);
     var case2Text = occupantPositionText(occPointData2, "case2Text", "Case 2", param);
-    var case3Text = occupantPositionText(occPointData3, "case3Text", "Case 3", param);
+    // var case3Text = occupantPositionText(occPointData3, "case3Text", "Case 3", param);
 
     //find min cy of visible occ points
     var compareOccupantArray = [];
@@ -3377,25 +3379,25 @@ render.makeGraph = function () {
       if ($("#caseSelection #case2Label").hasClass("unselected") == false ) {
         compareOccupantArray.push(occPointData2.ppd);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == false ) {
-        compareOccupantArray.push(occPointData3.ppd);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == false ) {
+      //   compareOccupantArray.push(occPointData3.ppd);
+      // }
     } else if (param == "mrt") {
       compareOccupantArray.push(occPointData.mrtppd);
       if ($("#caseSelection #case2Label").hasClass("unselected") == false ) {
         compareOccupantArray.push(occPointData2.mrtppd);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == false ) {
-        compareOccupantArray.push(occPointData3.mrtppd);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == false ) {
+      //   compareOccupantArray.push(occPointData3.mrtppd);
+      // }
     } else {
       compareOccupantArray.push(occPointData.tarDist);
       if ($("#caseSelection #case2Label").hasClass("unselected") == false ) {
         compareOccupantArray.push(occPointData2.tarDist);
       }
-      if ($("#caseSelection #case3Label").hasClass("unselected") == false ) {
-        compareOccupantArray.push(occPointData3.tarDist);
-      }
+      // if ($("#caseSelection #case3Label").hasClass("unselected") == false ) {
+      //   compareOccupantArray.push(occPointData3.tarDist);
+      // }
     }
 
     // put text in correct order
@@ -3502,14 +3504,14 @@ render.makeGraph = function () {
             totalText = totalText + case3Text + case1Text;
           }
         }
-        else if (maxCase == occPointData3.mrtppd) {
-          totalText = case3Text;
-          if (occPointData.mrtppd >= occPointData2.mrtppd) {
-            totalText = totalText + case1Text + case2Text;
-          } else {
-            totalText = totalText + case2Text + case1Text;
-          }
-        }
+        // else if (maxCase == occPointData3.mrtppd) {
+        //   totalText = case3Text;
+        //   if (occPointData.mrtppd >= occPointData2.mrtppd) {
+        //     totalText = totalText + case1Text + case2Text;
+        //   } else {
+        //     totalText = totalText + case2Text + case1Text;
+        //   }
+        // }
       }
     } else {
       if ($("#caseSelection #case2Label").hasClass("unselected") == true  && $("#caseSelection #case3Label").hasClass("unselected") == true) {
@@ -3808,14 +3810,14 @@ render.makeGraph = function () {
         .style("stroke", color2)
         .style("stroke-width", .5);
 
-    gsvg.append("path")
-        .attr("class", "connectLine3")
-        .attr("d", line(dataset3))
-        .attr("transform", function() {
-          return "translate(" + margin.left + "," + margin.top + ")";})
-        .style("fill", "none")
-        .style("stroke", color3)
-        .style("stroke-width", .5);
+    // gsvg.append("path")
+    //     .attr("class", "connectLine3")
+    //     .attr("d", line(dataset3))
+    //     .attr("transform", function() {
+    //       return "translate(" + margin.left + "," + margin.top + ")";})
+    //     .style("fill", "none")
+    //     .style("stroke", color3)
+    //     .style("stroke-width", .5);
   }
 
   function drawPPDThreshold(theGraph, data, param) {
@@ -3954,16 +3956,16 @@ render.makeGraph = function () {
     // Calculate where the new points should be for the sake of the combined chart.
     updateData(case1Data);
     updateData(case2Data);
-    updateData(case3Data);
+    //updateData(case3Data);
 
     // Update the graph points and occupant point of the combined chart.
     updateGraphPoints(chSvg, dataset, "dotCase1", color1, "comb");
     updateGraphPoints(chSvg, dataset2, "dotCase2", color2, "comb");
-    updateGraphPoints(chSvg, dataset3, "dotCase3", color3, "comb");
+    //updateGraphPoints(chSvg, dataset3, "dotCase3", color3, "comb");
 
     updateOccupantPoint(chSvg, [occPointData], "occdot1", color1, "comb");
     updateOccupantPoint(chSvg, [occPointData2], "occdot2", color2, "comb");
-    updateOccupantPoint(chSvg, [occPointData3], "occdot3", color3, "comb");
+    //updateOccupantPoint(chSvg, [occPointData3], "occdot3", color3, "comb");
 
     // Update the axes labes with the new threshold information.
     y3 = d3.scale.linear()
@@ -3996,8 +3998,8 @@ render.makeGraph = function () {
     occPointData = newOccData1;
     var newOccData2 = script.computeData(case2Data).occPtInfo;
     occPointData2 = newOccData2;
-    var newOccData3 = script.computeData(case3Data).occPtInfo;
-    occPointData3 = newOccData3;
+    // var newOccData3 = script.computeData(case3Data).occPtInfo;
+    // occPointData3 = newOccData3;
 
     thresholdDataText("dwn");
     thresholdDataText("mrt");
@@ -4167,16 +4169,16 @@ render.makeGraph = function () {
       updateOccupantPoint(graphSvg2, [occPointData], "occdot1", color1, "mrt");
       updateOccupantPoint(graphSvg2, [occPointData2], "occdot2", color2, "mrt");
       updateOccupantPoint(graphSvg2, [occPointData3], "occdot3", color3, "mrt");
-      updateOccupantPoint(graphSvg3, [occPointData], "occdot1", color1, "comb");
-      updateOccupantPoint(graphSvg3, [occPointData2], "occdot2", color2, "comb");
-      updateOccupantPoint(graphSvg3, [occPointData3], "occdot3", color3, "comb");
+      //updateOccupantPoint(graphSvg3, [occPointData], "occdot1", color1, "comb");
+      //updateOccupantPoint(graphSvg3, [occPointData2], "occdot2", color2, "comb");
+      //updateOccupantPoint(graphSvg3, [occPointData3], "occdot3", color3, "comb");
 
       var newMaxPPD = findMaxVisiblePPD();
       var newYPosition = y(newMaxPPD);
       var newMaxPPD2 = findMaxVisiblePPDmrt();
       var newYPosition2 = y(newMaxPPD2);
-      var newMaxPPD3 = findMaxVisiblePPDcomb();
-      var newYPosition3 = y5(newMaxPPD3);
+      // var newMaxPPD3 = findMaxVisiblePPDcomb();
+      // var newYPosition3 = y5(newMaxPPD3);
 
       // update calculated uvalue
       autocalcUValues();
@@ -4196,18 +4198,18 @@ render.makeGraph = function () {
         .transition();
 
       // adjust PPD threshold line
-      d3.selectAll(".occupantLine3")
-        .attr("x1", newX - margin.left)
-        .attr("x2", newX - margin.left)
-        .attr("y2", newYPosition3)
-        .transition();
+      // d3.selectAll(".occupantLine3")
+      //   .attr("x1", newX - margin.left)
+      //   .attr("x2", newX - margin.left)
+      //   .attr("y2", newYPosition3)
+      //   .transition();
     });
 
   d3.selectAll(".refLine").call(dragPPDLine);
   d3.selectAll(".refLine2").call(dragPPDLineMRT);
   d3.selectAll(".occupantLine").call(dragOccupantLine);
   d3.selectAll(".occupantLine2").call(dragOccupantLine);
-  d3.selectAll(".occupantLine3").call(dragOccupantLine);
+//  d3.selectAll(".occupantLine3").call(dragOccupantLine);
 
 
 
@@ -4284,43 +4286,43 @@ render.makeGraph = function () {
 
 
     /* -- UPDATE CASE 3 FACADE REPRESENTATION -- */
-    d3.select("#facadeCase3")
-      .attr("height", facHeight + facMargin.top + facMargin.bottom)
-      .transition()
-      .duration(500);
-    wallCase3.attr("width", function(d) {return facadeScaleWidth(case3Data.wallLen)})
-      .attr("height", function(d) {return facadeScaleHeight(case3Data.ceilingHeightValue)})
-      .attr("transform", function() {
-        return "translate(" + facMargin.left + "," + (facMargin.top + facadeScaleHeight(case3CeilingDiff)) + ")"
-      })
-      .transition()
-      .duration(500);
-    //update windows
-    d3.selectAll("rect.window3").remove()
-    facadeSvgCase3.selectAll(".window3")
-      .data(glzCoordsCase3)
-      .enter()
-      .append("rect")
-      .attr("class", function(d) {
-        if ($("#caseSelection #case3Label").hasClass("unselected")) {
-          return "window3 white"
-        } else {
-          return "window3 blue"
-        }
-      })
-      .attr("x", function(d) {return (facadeScaleWidth(d[3][0])+facadeScaleWidth(case3Data.wallLen)/2)})
-      .attr("y", function(d) {return (facadeScaleHeight(case3Data.ceilingHeightValue - d[3][2]))})
-      .attr("width", facadeScaleWidth(glzWidthCase3))
-      .attr("height", facadeScaleHeight(glzHeightCase3))
-      .attr("transform", function() {
-        return "translate(" + facMargin.left + "," + (facMargin.top + facadeScaleHeight(case3CeilingDiff)) + ")"
-      });
+    // d3.select("#facadeCase3")
+    //   .attr("height", facHeight + facMargin.top + facMargin.bottom)
+    //   .transition()
+    //   .duration(500);
+    // wallCase3.attr("width", function(d) {return facadeScaleWidth(case3Data.wallLen)})
+    //   .attr("height", function(d) {return facadeScaleHeight(case3Data.ceilingHeightValue)})
+    //   .attr("transform", function() {
+    //     return "translate(" + facMargin.left + "," + (facMargin.top + facadeScaleHeight(case3CeilingDiff)) + ")"
+    //   })
+    //   .transition()
+    //   .duration(500);
+    // //update windows
+    // d3.selectAll("rect.window3").remove()
+    // facadeSvgCase3.selectAll(".window3")
+    //   .data(glzCoordsCase3)
+    //   .enter()
+    //   .append("rect")
+    //   .attr("class", function(d) {
+    //     if ($("#caseSelection #case3Label").hasClass("unselected")) {
+    //       return "window3 white"
+    //     } else {
+    //       return "window3 blue"
+    //     }
+    //   })
+    //   .attr("x", function(d) {return (facadeScaleWidth(d[3][0])+facadeScaleWidth(case3Data.wallLen)/2)})
+    //   .attr("y", function(d) {return (facadeScaleHeight(case3Data.ceilingHeightValue - d[3][2]))})
+    //   .attr("width", facadeScaleWidth(glzWidthCase3))
+    //   .attr("height", facadeScaleHeight(glzHeightCase3))
+    //   .attr("transform", function() {
+    //     return "translate(" + facMargin.left + "," + (facMargin.top + facadeScaleHeight(case3CeilingDiff)) + ")"
+    //   });
 
 
 
     checkOccupantImageSize(case1Data, "#occupantImage", "#occupantDist", "#case1Heading");
     checkOccupantImageSize(case2Data, "#occupantImage2", "#occupantDist2", "#case2Heading");
-    checkOccupantImageSize(case3Data, "#occupantImage3", "#occupantDist3", "#case3Heading");
+    //checkOccupantImageSize(case3Data, "#occupantImage3", "#occupantDist3", "#case3Heading");
 
 
   }
