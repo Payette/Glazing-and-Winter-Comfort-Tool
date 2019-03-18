@@ -98,14 +98,14 @@ render.makeGraph = function () {
   var ppdLine3 = drawPPDThreshold(graphSvg3, ppdValue, "comb");
   drawGraph(graphSvg, "Downdraft Discomfort (PPD) - ", "dwn");
   drawGraph(graphSvg2, "Radiant Discomfort (PPD) - ", "mrt");
-  //drawGraph(graphSvg3, "Downdraft Discomfort (PPD) - ", "comb");
+  drawGraph(graphSvg3, "Downdraft Discomfort (PPD) - ", "comb");
 
   /* ------ PLOT THE DATA ------ */
   //draw occupant position line so that it's behind the points
   occupantDistanceRefLine();
   defDrawData(graphSvg, "dwn")
   defDrawData(graphSvg2, "mrt")
-  //defDrawData(graphSvg3, "comb")
+  defDrawData(graphSvg3, "comb")
 
   // call function to initialize all data points
   updateGraphPoints(graphSvg, dataset, "dotCase1", color1, "dwn");
@@ -114,8 +114,8 @@ render.makeGraph = function () {
   updateGraphPoints(graphSvg2, dataset, "dotCase1", color1, "mrt");
   updateGraphPoints(graphSvg2, dataset2, "dotCase2", color2, "mrt");
 //  updateGraphPoints(graphSvg2, dataset3, "dotCase3", color3, "mrt");
-  //updateGraphPoints(graphSvg3, dataset, "dotCase1", color1, "comb");
-  //updateGraphPoints(graphSvg3, dataset2, "dotCase2", color2, "comb");
+  updateGraphPoints(graphSvg3, dataset, "dotCase1", color1, "comb");
+  updateGraphPoints(graphSvg3, dataset2, "dotCase2", color2, "comb");
   //updateGraphPoints(graphSvg3, dataset3, "dotCase3", color3, "comb");
 
   // call function to initialize point at occupant location
@@ -125,8 +125,8 @@ render.makeGraph = function () {
   updateOccupantPoint(graphSvg2, [occPointData], "occdot1", color1, "mrt");
   updateOccupantPoint(graphSvg2, [occPointData2], "occdot2", color2, "mrt");
   //updateOccupantPoint(graphSvg2, [occPointData3], "occdot3", color3, "mrt");
-  //updateOccupantPoint(graphSvg3, [occPointData], "occdot1", color1, "comb");
-  //updateOccupantPoint(graphSvg3, [occPointData2], "occdot2", color2, "comb");
+  updateOccupantPoint(graphSvg3, [occPointData], "occdot1", color1, "comb");
+  updateOccupantPoint(graphSvg3, [occPointData2], "occdot2", color2, "comb");
   //updateOccupantPoint(graphSvg3, [occPointData3], "occdot3", color3, "comb");
 
   // add text at occupanct location
@@ -135,13 +135,13 @@ render.makeGraph = function () {
   thresholdDataText("comb");
   setHover(graphSvg, "dwn");
   setHover(graphSvg2, "mrt");
-  //setHover(graphSvg3, "comb");
+  setHover(graphSvg3, "comb");
 
   // Add annoying text to credit Payette.
   // Because you gotta annoy those content theifs (sarcasm).
   addPayetteText(graphSvg);
   addPayetteText(graphSvg2);
-  //addPayetteText(graphSvg3);
+  addPayetteText(graphSvg3);
 
   function setHover (mySVG, param) {
     // Show text on hover over dot
