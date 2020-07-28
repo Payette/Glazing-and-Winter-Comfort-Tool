@@ -7,8 +7,14 @@ var urlParameters = urlObject({'url':thisURL}).parameters;
 
 // determine units
 if (typeof urlParameters.units != 'undefined') {
+	let unitSys;
+	if(urlParameters.units[0] == "S" || urlParameters.units[0] == "I"){
+	   unitSys = urlParameters.units;
+	}else{
+	   unitSys = urlParameters.units[0];
+	}
 
-	unitSys = urlParameters.units;
+	
 
 	if (unitSys == "IP") {
 		$(".optionButton#IP").addClass("selected");
